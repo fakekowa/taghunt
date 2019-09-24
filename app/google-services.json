@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "840546406219",
+    "firebase_url": "https://tag-hunt.firebaseio.com",
+    "project_id": "tag-hunt",
+    "storage_bucket": "tag-hunt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840546406219:android:e44904370ae05be301a2ce",
+        "android_client_info": {
+          "package_name": "com.appzet.taghunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840546406219-6nvs20j03nlllf2khguhq2pqga1ghq7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJbg-jCWEJ0sydlIYj0W9vM-eQ0mwrWIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840546406219-6nvs20j03nlllf2khguhq2pqga1ghq7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
