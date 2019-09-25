@@ -8,6 +8,6 @@ class CreateUserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.join_game_activity)
+        setContentView(R.layout.create_game_activity)
     }
 }

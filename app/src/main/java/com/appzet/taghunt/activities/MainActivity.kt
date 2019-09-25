@@ -23,5 +23,10 @@ class MainActivity : AppCompatActivity() {
            val intent =  Intent(this, JoinActivity::class.java)
             startActivity(intent)
         }
+
+       // createGameButton.setOnClickListener {
+         //   val intent2 = Intent(this, CreateGameActivity::class.java)
+           // startActivity(intent2)
+        //}
     }
 }

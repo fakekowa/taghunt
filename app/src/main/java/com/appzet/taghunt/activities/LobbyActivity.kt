@@ -19,7 +19,7 @@ class LobbyActivity : AppCompatActivity() {
         var playerCount = findViewById<TextView>(R.id.lobby_player_number_text)
         val username = intent.getStringArrayListExtra("username")
 
-        playerCount.text = username.size.toString() + "/25"
+        playerCount.text = username.size.toString() + "/20"
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, username)
 
         listView.adapter = adapter
