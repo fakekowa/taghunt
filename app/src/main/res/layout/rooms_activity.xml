@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+android:layout_height="match_parent"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/room_list_text"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+<TextView
+    android:id="@+id/roomListTextField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/room_list_text"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:textSize="50sp"
+    android:textStyle="bold" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="663dp"
-        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
-
-
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/my_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="663dp"
+    android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
-

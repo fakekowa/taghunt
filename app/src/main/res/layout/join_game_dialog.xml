@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/curve_shape"
+    android:orientation="vertical" >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/joinGameDialogTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp" >
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_username_editText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/hint_username_entry_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+            android:id="@+id/joinGameDialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/join_game_button"
+            android:focusable="true" />
+
+</LinearLayout>

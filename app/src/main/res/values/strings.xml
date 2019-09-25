@@ -14,9 +14,13 @@
     //Room search activity
     <string name="room_list_text">Room List</string>
 
-    //lobby
+    //lobby activity
     <string name="lobby_players_text">Players:</string>
     <string name="start_game_button">Start Game</string>
+
+    //Create Game Activity
+    <string name="createGameActivityTextView">Create Game</string>
+
 
 
 </resources>
