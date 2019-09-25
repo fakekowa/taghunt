@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".create_user_activity">
+    tools:context=".CreateUserActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enter_username_textfield"
@@ -22,6 +22,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_username_entry_text" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -29,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="128dp"
         android:layout_marginEnd="150dp"
-        android:text="@string/create_user_button"
+        android:text="@string/join_game_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_username_textfield" />

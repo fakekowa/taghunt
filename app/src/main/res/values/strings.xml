@@ -2,8 +2,7 @@
     <string name="app_name">taghunt</string>
     <string name="sv_app_name">jagejakt</string>
 
-    //Create user activity
-    <string name="create_user_button">Create User</string>
+    //Join game activity
     <string name="username_entry_field">Username</string>
     <string name="hint_username_entry_text">Username</string>
 
