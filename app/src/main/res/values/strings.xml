@@ -1,9 +1,23 @@
 <resources>
     <string name="app_name">taghunt</string>
     <string name="sv_app_name">jagejakt</string>
+
+    //Create user activity
     <string name="create_user_button">Create User</string>
     <string name="username_entry_field">Username</string>
     <string name="hint_username_entry_text">Username</string>
-    <string name = "create_game_button">Create New Game</string>
-    <string name = "join_game_button">Join Game</string>
+
+    //Main activity
+    <string name="create_game_button">Create New Game</string>
+    <string name="join_game_button">Join Game</string>
+    <string name="main_activity_copyright_claim">\u00A9 All Rights Reserved Alentus Systems</string>
+
+    //Room search activity
+    <string name="room_list_text">Room List</string>
+
+    //lobby
+    <string name="lobby_players_text">Players:</string>
+    <string name="start_game_button">Start Game</string>
+
+
 </resources>
