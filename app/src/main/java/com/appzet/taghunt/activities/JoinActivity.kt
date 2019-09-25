@@ -19,9 +19,19 @@ class JoinActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.create_user_button)
         var username = findViewById<TextInputEditText>(R.id.enter_username_editText)
 
+        val usernameList: ArrayList<String> = arrayListOf()
+
         button.setOnClickListener(){
+            usernameList.add(username.text.toString())
+            usernameList.add("Aleksander")
+            usernameList.add("Pontus")
+            usernameList.add("Baloo")
+            usernameList.add("Bagheera")
+            usernameList.add("Sherikhan")
+            usernameList.add("Mowgli")
+            usernameList.add("King Louie")
             val intent = Intent(this, LobbyActivity::class.java)
-            intent.putExtra("username", username.text.toString())
+            intent.putStringArrayListExtra("username", usernameList)
             startActivity(intent)
         }
     }
