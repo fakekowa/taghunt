@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateUserActivity">
+    tools:context=".activities.CreateUserActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enter_username_textfield"
+        android:id="@+id/enter_username_textLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enter_username_editText"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_username_entry_text" />
@@ -35,7 +36,7 @@
         android:text="@string/join_game_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_username_textfield" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_username_textLayout" />
 
     <ImageView
         android:id="@+id/imageView"

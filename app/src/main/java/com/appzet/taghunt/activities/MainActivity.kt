@@ -1,9 +1,11 @@
-package com.appzet.taghunt
+package com.appzet.taghunt.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.appzet.taghunt.wrappers.FirebaseFirestoreWrapper
+import com.appzet.taghunt.R
 
 class MainActivity : AppCompatActivity() {
     val db = FirebaseFirestoreWrapper()

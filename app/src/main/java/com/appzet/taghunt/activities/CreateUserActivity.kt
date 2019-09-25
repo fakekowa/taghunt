@@ -1,12 +1,13 @@
-package com.appzet.taghunt
+package com.appzet.taghunt.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.appzet.taghunt.R
 
-class LobbyActivity : AppCompatActivity() {
+class CreateUserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.lobby_activity)
+        setContentView(R.layout.join_game_activity)
     }
 }

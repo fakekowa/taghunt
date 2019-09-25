@@ -1,4 +1,4 @@
-package com.appzet.taghunt
+package com.appzet.taghunt.wrappers
 
 import com.google.firebase.firestore.FirebaseFirestore
 
