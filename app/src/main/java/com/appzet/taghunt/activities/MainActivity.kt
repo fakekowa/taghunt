@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         joinGameButton.setOnClickListener{
             permission.checkPermission()
-           //val intent =  Intent(this, JoinActivity::class.java)
-           // startActivity(intent)
+           val intent =  Intent(this, RoomsActivity::class.java)
+           startActivity(intent)
         }
     }
 

@@ -15,7 +15,7 @@ class LobbyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lobby_activity)
-        listView = findViewById<ListView>(R.id.lobbyActivityList)
+        listView = findViewById(R.id.lobbyActivityList)
         var playerCount = findViewById<TextView>(R.id.lobby_player_number_text)
         val username = intent.getStringArrayListExtra("username")
 
