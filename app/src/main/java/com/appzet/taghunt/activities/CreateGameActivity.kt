@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -22,9 +23,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.create_game_activity.*
 import java.lang.reflect.AccessibleObject.setAccessible
 import android.widget.Spinner
@@ -32,6 +30,10 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.view.View
+import android.widget.ArrayAdapter
+import com.appzet.taghunt.wrappers.FirebaseFirestoreWrapper
+import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.Task
 
 
@@ -48,6 +50,9 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
     var gbg: LatLng = LatLng(0.0, 0.0)
     var markerOption: MarkerOptions = MarkerOptions()
     var marker: Marker? = null
+    val firestore = FirebaseFirestoreWrapper()
+    var hashmap: HashMap<String, Any> = HashMap()
+    var username = "John Doe"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,16 +68,12 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
 
         // Create an ArrayAdapter
         val adapter = ArrayAdapter.createFromResource(this,
-            com.appzet.taghunt.R.array.create_game_activity_array_list, android.R.layout.simple_spinner_item)
+            R.array.create_game_activity_array_list, android.R.layout.simple_spinner_item)
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // Apply the adapter to the spinner
         create_game_activity_spinner.adapter = adapter
-        fun getValues(view: View) {
-            Toast.makeText(this, "Spinner 1 " + create_game_activity_spinner.selectedItem.toString(),
-                Toast.LENGTH_LONG).show()
-        }
-        val spinner = findViewById<Spinner>(com.appzet.taghunt.R.id.create_game_activity_spinner)
+        val spinner = findViewById<Spinner>(R.id.create_game_activity_spinner)
         try {
             val popup = Spinner::class.java.getDeclaredField("mPopup")
             popup.isAccessible = true
@@ -129,7 +130,6 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
         val gbg = LatLng(11.0, 22.0)
         marker = mMap.addMarker(MarkerOptions().position(gbg).title("Marker in Gothenburg"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gbg))
-
         // Set a preference for minimum and maximum zoom.
         mMap.setMinZoomPreference(14.0f);
         mMap.setMaxZoomPreference(20.0f);
@@ -215,9 +215,14 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
         // New location has now been determined
 
         mLastLocation = location
+         hashmap = hashMapOf(
+             "Longtitude" to location.longitude,
+             "Latitude" to location.latitude
+        )
         gbg = LatLng(mLastLocation.latitude, mLastLocation.longitude)
         marker!!.position = gbg
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gbg))
+        firestore.createUser(username, hashmap)
         if (mLastLocation != null) {
 // Update the UI from here
         }
