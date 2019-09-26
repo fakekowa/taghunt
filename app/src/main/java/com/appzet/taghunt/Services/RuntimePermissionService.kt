@@ -2,7 +2,9 @@ package com.appzet.taghunt.Services
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -44,5 +46,22 @@ class RuntimePermissionService constructor (thisActivity: Activity) {
             // Permission has already been granted
         }
 
+    }
+
+    fun checkPermissionForLocation(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if (thisActivity.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED){
+                true
+            }else{
+                // Show the permission request
+                ActivityCompat.requestPermissions(thisActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
+                false
+            }
+        } else {
+            true
+        }
     }
 }
