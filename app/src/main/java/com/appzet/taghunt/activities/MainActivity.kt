@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
            val intent =  Intent(this, RoomsActivity::class.java)
            startActivity(intent)
         }
+        createGameButton.setOnClickListener {
+            val intent2 = Intent(this, CreateGameActivity::class.java)
+            startActivity(intent2)
+        }
     }
 
         override fun onRequestPermissionsResult(requestCode: Int,
@@ -52,9 +56,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-       // createGameButton.setOnClickListener {
-         //   val intent2 = Intent(this, CreateGameActivity::class.java)
-           // startActivity(intent2)
-        //}
+
     }
 }
