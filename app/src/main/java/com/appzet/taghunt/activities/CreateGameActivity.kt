@@ -37,8 +37,6 @@ import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.Task
 
 
-
-
 class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
@@ -56,39 +54,79 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.appzet.taghunt.R.layout.create_game_activity)
+        setContentView(R.layout.create_game_activity)
 
-        val button = findViewById<Button>(R.id.create_game_button)
+        val button1 = findViewById<Button>(R.id.create_game_activity_start_game_button)
+        button1.setOnClickListener {
+            val intent = Intent(this, PreyInGameActivity::class.java)
+            startActivity(intent)
+        }
 
+        //Check permission for traching location
         permission = RuntimePermissionService(this)
         permission!!.checkPermissionForLocation()
+        //Load in the map?
         val mapFragment = supportFragmentManager
             .findFragmentById(com.appzet.taghunt.R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        // Create an ArrayAdapter
+        // Create an ArrayAdapter for number of players
         val adapter = ArrayAdapter.createFromResource(this,
             R.array.create_game_activity_array_list, android.R.layout.simple_spinner_item)
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // Apply the adapter to the spinner
         create_game_activity_spinner.adapter = adapter
+
+        //Attempt to shorten the spinner dropdown list
         val spinner = findViewById<Spinner>(R.id.create_game_activity_spinner)
         try {
             val popup = Spinner::class.java.getDeclaredField("mPopup")
             popup.isAccessible = true
-
             // Get private mPopup member variable and try cast to ListPopupWindow
             val popupWindow = popup.get(spinner) as android.widget.ListPopupWindow
-
-            // Set popupWindow height to 500px
-            popupWindow.height = 700
-        } catch (e: NoClassDefFoundError) {
+            // Set popupWindow height to 700px
+            popupWindow.height = 500
+        }
+        catch (e: NoClassDefFoundError) {
             // silently fail...
         } catch (e: ClassCastException) {
         } catch (e: NoSuchFieldException) {
         } catch (e: IllegalAccessException) {
         }
+
+        // Create an ArrayAdapter for playable area
+        val adapter2 = ArrayAdapter.createFromResource(this,
+            R.array.create_game_activity_array_list2, android.R.layout.simple_spinner_item)
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Apply the adapter to the spinner
+        create_game_activity_spinner2.adapter = adapter2
+
+        // Create an ArrayAdapter for play time
+        val adapter3 = ArrayAdapter.createFromResource(this,
+            R.array.create_game_activity_array_list3, android.R.layout.simple_spinner_item)
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Apply the adapter to the spinner
+        create_game_activity_spinner3.adapter = adapter3
+
+
+            //Kod som ska mäta avståndet mellan två long,lat positioner. Tänkte att man kan vända på den för att beräkna long,lat från avståndet?
+    //    public static String getDistance(LatLng latlngA, LatLng latlngB) {
+   //       Location locationA = new Location("point A");
+
+   //       locationA.setLatitude(latlngA.latitude);
+   //       locationA.setLongitude(latlngA.longitude);
+
+   //       Location locationB = new Location("point B");
+
+   //       locationB.setLatitude(latlngB.latitude);
+   //       locationB.setLongitude(latlngB.longitude);
+
+   //       float distance = locationA.distanceTo(locationB)/1000; //To convert Meter in Kilometer
+   //       return String.format("%.2f", distance);
+   //   }
 
 
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -96,14 +134,14 @@ class CreateGameActivity: AppCompatActivity(), OnMapReadyCallback {
             buildAlertMessageNoGps()
         }
 
-        button.setOnClickListener{
-            if(permission!!.checkPermissionForLocation() && !started) {
-                startLocationUpdates()
-            }
-            else{
-                stoplocationUpdates()
-            }
-        }
+   //     button1.setOnClickListener{
+   //         if(permission!!.checkPermissionForLocation() && !started) {
+   //             startLocationUpdates()
+   //         }
+   //         else{
+   //             stoplocationUpdates()
+   //         }
+   //     }
     }
 
 //    private LatLngBounds AUSTRALIA = new LatLngBounds(
