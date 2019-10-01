@@ -19,6 +19,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:hint="@string/hint_username_entry_text" />
     </com.google.android.material.textfield.TextInputLayout>
 
