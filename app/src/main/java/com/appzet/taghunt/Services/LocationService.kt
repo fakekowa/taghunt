@@ -11,17 +11,18 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 
-class LocationService {
+class LocationService(mMap: GoogleMap) {
 
-    private lateinit var mMap: GoogleMap
+    internal var lastLocation: Location = Location("default")
+    internal var map = mMap
     private var mFusedLocationProviderClient: FusedLocationProviderClient? = null
     internal lateinit var mLocationRequest: LocationRequest
-    lateinit var mLastLocation: Location
     var gbg: LatLng = LatLng(0.0, 0.0)
     var marker: Marker? = null
 
-    protected fun startLocationUpdates(activity: Activity) {
+    fun startLocationUpdates(activity: Activity) {
 
         // Create the location request to start receiving updates
         mLocationRequest = LocationRequest()
@@ -55,17 +56,18 @@ class LocationService {
     private val mLocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             // do work here
-            locationResult.lastLocation
+            lastLocation = locationResult.lastLocation
             //TODO need to add mMap here
-            onLocationChanged(locationResult.lastLocation, mMap)
+            onLocationChanged()
         }
     }
 
-    fun onLocationChanged(location: Location, mMap: GoogleMap) {
+    fun onLocationChanged() {
         // New location has now been determined
-        mLastLocation = location
-        gbg = LatLng(mLastLocation.latitude, mLastLocation.longitude)
+        var haha: Location? = lastLocation
+        gbg = LatLng(lastLocation.latitude, lastLocation.longitude)
+        marker = map.addMarker(MarkerOptions().position(gbg).title("Marker in Gothenburg"))
         marker!!.position = gbg
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(gbg))
+        map.moveCamera(CameraUpdateFactory.newLatLng(gbg))
     }
 }
