@@ -15,55 +15,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/create_game_activity_spinner"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="100dp"
-        android:spinnerMode="dropdown"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/createGameActivityTextView2" />
-
-    <!--   <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createGameDropDownPlayArea"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
         android:spinnerMode="dropdown"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/createGameActivityTextView2"
-        app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput" >
+        app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput">
 
         <AutoCompleteTextView
             android:id="@+id/filled_exposed_dropdown"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_width="151dp"
+            android:layout_height="79dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            android:dropDownHeight="200dp"
+            android:hint="Area"
             android:spinnerMode="dropdown"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/createGameActivityTextView2"
-            app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput"/>
+            app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput" />
 
-    </com.google.android.material.textfield.TextInputLayout> -->
-
-    <Spinner
-        android:id="@+id/create_game_activity_spinner2"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="100dp"
-        android:spinnerMode="dropdown"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/createGameActivityTextView3" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/create_game_activity_spinner3"
         android:layout_width="140dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="268dp"
         android:spinnerMode="dropdown"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +59,15 @@
         tools:layout_editor_absoluteX="202dp">
 
 
+        <TextView
+            android:id="@+id/createGameActivityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_game_button"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="50sp"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -89,19 +80,6 @@
         android:hint="@string/hint_username_entry_text"
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/createGameActivityTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_game_button"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
@@ -125,33 +103,23 @@
         android:id="@+id/createGameActivityTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
         android:text="@string/createGameActivityTextView2"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput" />
 
     <TextView
-        android:id="@+id/createGameActivityTextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/createGameActivityTextView3"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextView2" />
-
-    <TextView
         android:id="@+id/createGameActivityTextView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/createGameActivityTextView4"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextView3" />
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintEnd_toStartOf="@+id/create_game_activity_spinner3"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

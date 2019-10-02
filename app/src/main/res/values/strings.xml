@@ -46,11 +46,39 @@
         <item>20</item>
     </string-array>
 
-    <string-array name="create_game_activity_array_list2">
+    <string-array name="create_game_activity_playablearea_list">
         <item>1 km</item>
         <item>2 km</item>
         <item>5 km</item>
         <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>1 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>2 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+
     </string-array>
 
     <string-array name="create_game_activity_array_list3">

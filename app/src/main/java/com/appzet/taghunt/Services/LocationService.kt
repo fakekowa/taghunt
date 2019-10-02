@@ -22,13 +22,13 @@ class LocationService(mMap: GoogleMap) {
     var gbg: LatLng = LatLng(0.0, 0.0)
     var marker: Marker? = null
 
-    fun startLocationUpdates(activity: Activity) {
+    fun startLocationUpdates(activity: Activity, frequency: Long) {
 
         // Create the location request to start receiving updates
         mLocationRequest = LocationRequest()
         mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        mLocationRequest!!.setInterval(10000)
-        mLocationRequest!!.setFastestInterval(8000)
+        mLocationRequest!!.setInterval(frequency)
+        mLocationRequest!!.setFastestInterval(frequency)
 
         // Create LocationSettingsRequest object using location request
         val builder = LocationSettingsRequest.Builder()
@@ -49,7 +49,7 @@ class LocationService(mMap: GoogleMap) {
             Looper.myLooper())
     }
 
-    private fun stoplocationUpdates() {
+    fun stoplocationUpdates() {
         mFusedLocationProviderClient!!.removeLocationUpdates(mLocationCallback)
     }
 

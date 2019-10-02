@@ -3,6 +3,7 @@ package com.appzet.taghunt.activities
 import android.location.Location
 import android.os.Bundle
 import android.os.SystemClock
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.appzet.taghunt.Services.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,7 +28,7 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(com.appzet.taghunt.R.layout.prey_in_game_activity)
 
         loadMap()
-        loadTimer()
+        loadTimer(15)
 
     }
 
@@ -35,7 +36,7 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         locationService = LocationService(mMap)
-        locationService!!.startLocationUpdates(this)
+        locationService!!.startLocationUpdates(this, 5000)
         locationService!!.onLocationChanged()
 
         // Add a marker in Sydney and move the camera
@@ -55,17 +56,23 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment?.getMapAsync(this)
     }
 
-    fun loadTimer() {
+    fun loadTimer(minutes: Long) {
         //Start chronometer countdown
         view_timer.isCountDown = true
-        view_timer.base = SystemClock.elapsedRealtime() + 5000
+        view_timer.base = SystemClock.elapsedRealtime() + minutes*1000*60
         view_timer.onFinishTemporaryDetach()
         view_timer.start()
         view_timer.setOnChronometerTickListener {
             if (view_timer.base < SystemClock.elapsedRealtime()){
                 view_timer.stop()
+                locationService = null
+                try{
+                    locationService!!.stoplocationUpdates()
+                }
+                catch(e: Exception){
+                    Toast.makeText(this, "locationService was null, uh-oh something is wrong, please restart the app", Toast.LENGTH_LONG).show()
+                }
             }
-            else{}
         }
     }
 }
