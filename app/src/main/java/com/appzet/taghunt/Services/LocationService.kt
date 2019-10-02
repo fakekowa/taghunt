@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.Marker
 
 class LocationService {
 
+    private lateinit var mMap: GoogleMap
     private var mFusedLocationProviderClient: FusedLocationProviderClient? = null
     internal lateinit var mLocationRequest: LocationRequest
     lateinit var mLastLocation: Location
@@ -56,17 +57,13 @@ class LocationService {
             // do work here
             locationResult.lastLocation
             //TODO need to add mMap here
-            onLocationChanged(locationResult.lastLocation)
+            onLocationChanged(locationResult.lastLocation, mMap)
         }
     }
 
     fun onLocationChanged(location: Location, mMap: GoogleMap) {
         // New location has now been determined
         mLastLocation = location
-        var hashmap = hashMapOf(
-            "Longtitude" to location.longitude,
-            "Latitude" to location.latitude
-        )
         gbg = LatLng(mLastLocation.latitude, mLastLocation.longitude)
         marker!!.position = gbg
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gbg))

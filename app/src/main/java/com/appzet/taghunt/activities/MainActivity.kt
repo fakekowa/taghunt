@@ -8,16 +8,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.appzet.taghunt.R
 import com.appzet.taghunt.Services.RuntimePermissionService
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     var permission: RuntimePermissionService? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        permission = RuntimePermissionService(this)
+
+        permission!!.checkPermission()
 
         val joinGameButton = findViewById<Button>(R.id.join_game_button)
         val createGameButton = findViewById<Button>(R.id.create_game_button)
@@ -29,20 +34,6 @@ class MainActivity : AppCompatActivity() {
         createGameButton.setOnClickListener {
             val intent2 = Intent(this, CreateGameActivity::class.java)
             startActivity(intent2)
-        }
-    }
-
-    //ToDo need to add permission check and show joingamebutotn&creategamebutton here
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
-        button: Button
-    ) {
-        if (requestCode == permission!!.MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            }
         }
     }
 }

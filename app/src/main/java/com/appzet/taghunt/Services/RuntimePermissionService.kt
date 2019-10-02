@@ -5,13 +5,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-class RuntimePermissionService constructor (thisActivity: Activity) {
+class RuntimePermissionService constructor (thisActivity: Activity): ActivityCompat.OnRequestPermissionsResultCallback {
 
     val thisActivity: Activity = thisActivity
-    var permission: RuntimePermissionService? = null
+    private var permission: RuntimePermissionService? = null
     val MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
 
     fun checkPermission() {
@@ -62,6 +63,19 @@ class RuntimePermissionService constructor (thisActivity: Activity) {
             }
         } else {
             true
+        }
+    }
+
+    //ToDo need to add permission check and show joingamebutotn&creategamebutton here
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == permission!!.MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            }
         }
     }
 }
