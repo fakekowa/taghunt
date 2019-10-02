@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 class RuntimePermissionService constructor (thisActivity: Activity) {
 
     val thisActivity: Activity = thisActivity
-
+    var permission: RuntimePermissionService? = null
     val MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
 
     fun checkPermission() {
