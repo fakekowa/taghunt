@@ -24,7 +24,7 @@
     <string name="createGameActivityTextView3">Playable Area:</string>
     <string name="createGameActivityTextView4">Play Time:</string>
 
-    <string-array name="create_game_activity_array_list">
+    <string-array name="create_game_activity_No_Players_list">
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -47,41 +47,13 @@
     </string-array>
 
     <string-array name="create_game_activity_playablearea_list">
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>1 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-        <item>2 km</item>
-        <item>5 km</item>
-        <item>10 km</item>
-
+        <item>1 km²</item>
+        <item>4 km²</item>
+        <item>9 km²</item>
+        <item>16 km²</item>
     </string-array>
 
-    <string-array name="create_game_activity_array_list3">
+    <string-array name="create_game_activity_play_time_list">
         <item>15 min</item>
         <item>30 min</item>
         <item>1 h</item>
