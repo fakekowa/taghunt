@@ -3,7 +3,6 @@
     android:layout_gravity="center"
     android:layout_width="300dp"
     android:layout_height="150dp"
-    android:background="@drawable/curve_shape"
     android:orientation="vertical" >
 
     <com.google.android.material.textfield.TextInputLayout
