@@ -10,26 +10,24 @@ import com.appzet.taghunt.R
 
 class RoomsActivity : AppCompatActivity() {
 
+    val dialog = Dialog(this)
+    val joinBtn = dialog.findViewById(R.id.joinGameDialogButton) as Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rooms_activity)
 
         showDialog("thisismytitle")
-
-
     }
 
     private fun showDialog(title: String) {
-        val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.join_game_dialog)
-        val joinBtn = dialog.findViewById(R.id.joinGameDialogButton) as Button
+        dialog.show()
+
         joinBtn.setOnClickListener {
             dialog.dismiss()
         }
-        dialog.show()
-
     }
-
 }

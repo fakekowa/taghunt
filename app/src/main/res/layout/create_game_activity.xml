@@ -6,11 +6,11 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/create_game_activity_start_game_button"
+        android:id="@+id/createGameActivityStartGameButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/start_game_button"
+        android:text="@string/startGameButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +38,6 @@
             app:layout_constraintTop_toBottomOf="@+id/createGameActivityTextInput" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout

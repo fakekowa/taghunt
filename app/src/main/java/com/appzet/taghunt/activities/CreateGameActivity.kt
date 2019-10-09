@@ -22,6 +22,11 @@ class CreateGameActivity: AppCompatActivity() {
         setContentView(R.layout.create_game_activity)
 
         val textInputEditText = findViewById<TextInputEditText>(R.id.createGameActivityTextInput)
+        val button1 = findViewById<Button>(R.id.createGameActivityStartGameButton)
+        button1.setOnClickListener {
+            val intent = Intent(this, LobbyActivity::class.java)
+            startActivity(intent)
+        }
 
         editTextFilledExposedDropdown =
             findViewById(R.id.createGamePlayerDropdown)
@@ -31,11 +36,6 @@ class CreateGameActivity: AppCompatActivity() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
 
-        val button1 = findViewById<Button>(R.id.create_game_activity_start_game_button)
-        button1.setOnClickListener {
-            val intent = Intent(this, PreyInGameActivity::class.java)
-            startActivity(intent)
-        }
 
         //Populate the "Spinners"
         CreatePlayerAdapter()
