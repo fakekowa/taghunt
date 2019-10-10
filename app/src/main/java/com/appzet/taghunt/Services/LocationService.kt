@@ -10,8 +10,6 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 
 class LocationService(mMap: GoogleMap) {
 
@@ -20,7 +18,6 @@ class LocationService(mMap: GoogleMap) {
     private var mFusedLocationProviderClient: FusedLocationProviderClient? = null
     internal lateinit var mLocationRequest: LocationRequest
     var gbg: LatLng = LatLng(0.0, 0.0)
-    var marker: Marker? = null
 
     fun startLocationUpdates(activity: Activity, frequency: Long) {
 
@@ -66,8 +63,6 @@ class LocationService(mMap: GoogleMap) {
         // New location has now been determined
         var haha: Location? = lastLocation
         gbg = LatLng(lastLocation.latitude, lastLocation.longitude)
-        marker = map.addMarker(MarkerOptions().position(gbg).title("Marker in Gothenburg"))
-        marker!!.position = gbg
         map.moveCamera(CameraUpdateFactory.newLatLng(gbg))
     }
 }

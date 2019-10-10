@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.appzet.taghunt.R
 import com.appzet.taghunt.Services.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.join_game_dialog.*
@@ -21,11 +23,10 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private var locationService: LocationService? = null
-    var marker: Marker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.appzet.taghunt.R.layout.prey_in_game_activity)
+        setContentView(R.layout.prey_in_game_activity)
 
         loadMap()
         loadTimer(15)
@@ -41,18 +42,19 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         val gbg = LatLng(11.0, 22.0)
-        marker = mMap.addMarker(MarkerOptions().position(gbg).title("Marker in Gothenburg"))
+        //marker = mMap.addMarker(MarkerOptions().position(gbg).title("Marker in Gothenburg"))
+        mMap.isMyLocationEnabled = true
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gbg))
         // Set a preference for minimum and maximum zoom.
-        mMap.setMinZoomPreference(14.0f);
-        mMap.setMaxZoomPreference(20.0f);
+        mMap.setMinZoomPreference(14.0f)
+        mMap.setMaxZoomPreference(20.0f)
         mMap.maxZoomLevel
     }
 
     fun loadMap() {
         //Load in the map
         val mapFragment = (supportFragmentManager
-            .findFragmentById(com.appzet.taghunt.R.id.preyInGameMap) as SupportMapFragment?)
+            .findFragmentById(R.id.preyInGameMap) as SupportMapFragment?)
         mapFragment?.getMapAsync(this)
     }
 
@@ -65,15 +67,10 @@ class PreyInGameActivity : AppCompatActivity(), OnMapReadyCallback {
         view_timer.setOnChronometerTickListener {
             if (view_timer.base < SystemClock.elapsedRealtime()){
                 view_timer.stop()
-                locationService = null
-                try{
                     locationService!!.stoplocationUpdates()
-                }
-                catch(e: Exception){
-                    Toast.makeText(this, "locationService was null, uh-oh something is wrong, please restart the app", Toast.LENGTH_LONG).show()
+                    locationService = null
                 }
             }
         }
     }
-}
 

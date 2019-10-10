@@ -26,6 +26,7 @@ class RuntimePermissionService constructor (thisActivity: Activity): ActivityCom
                     thisActivity,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
+
             ) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
@@ -66,7 +67,6 @@ class RuntimePermissionService constructor (thisActivity: Activity): ActivityCom
         }
     }
 
-    //ToDo need to add permission check and show joingamebutotn&creategamebutton here
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

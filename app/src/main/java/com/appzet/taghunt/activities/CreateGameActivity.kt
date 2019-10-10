@@ -28,9 +28,6 @@ class CreateGameActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        editTextFilledExposedDropdown =
-            findViewById(R.id.createGamePlayerDropdown)
-
         //Focus username input and show keyboard
         textInputEditText.requestFocus()
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
