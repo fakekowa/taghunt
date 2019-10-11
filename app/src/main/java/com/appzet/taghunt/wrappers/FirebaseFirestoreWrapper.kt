@@ -5,22 +5,36 @@ import com.appzet.taghunt.dataclass.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseFirestoreWrapper {
-
+    val ROOM_SETTINGS = "RoomSettings"
     private val db = FirebaseFirestore.getInstance()
     var roomname = "Default"
     var user: User? = null
     var roomSettings: RoomSettings? = null
+    var username: String? = null
 
-    fun createUser(_user: User) : Boolean {
+    fun createUser(_user: User) {
         user = _user
-        return db.collection(roomname).document(user!!.username)
-            .set(user!!).isSuccessful
+        db.collection(roomname).document(user!!.username)
+            .set(user!!)
     }
 
-    fun createRoom(_roomSettings: RoomSettings, _roomname: String): Boolean {
-        roomSettings = _roomSettings
-        roomname = _roomname
+    fun createRoom(roomname: String, user: User) {
+        username = user.username
+        this.roomname = roomname
+        this.user = user
 
-        return db.collection(roomname).document(roomSettings!!.name).set(roomSettings!!).isSuccessful;
+
+        db.collection(this.roomname).document(username!!)
+            .set(this.user!!)
+    }
+
+    fun createRoomSettings(roomSettings: RoomSettings, roomname: String){
+        this.roomSettings = roomSettings
+        this.roomname = roomname
+
+
+        db.collection(this.roomname).document(ROOM_SETTINGS).set(this.roomSettings!!)
+
+
     }
 }
