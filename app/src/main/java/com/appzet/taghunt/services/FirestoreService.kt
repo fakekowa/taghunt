@@ -1,12 +1,14 @@
-package com.appzet.taghunt.wrappers
+package com.appzet.taghunt.services
 
 import com.appzet.taghunt.dataclass.RoomSettings
 import com.appzet.taghunt.dataclass.User
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FirebaseFirestoreWrapper {
+class FirestoreService {
     val ROOM_SETTINGS = "RoomSettings"
     private val db = FirebaseFirestore.getInstance()
+    var rootcollection = "Taghunt"
     var roomname = "Default"
     var user: User? = null
     var roomSettings: RoomSettings? = null
@@ -14,8 +16,7 @@ class FirebaseFirestoreWrapper {
 
     fun createUser(_user: User) {
         user = _user
-        db.collection(roomname).document(user!!.username)
-            .set(user!!)
+        db.collection(rootcollection).document(roomname).update("users", FieldValue.arrayUnion(user!!))
     }
 
     fun createRoom(roomname: String, user: User) {
@@ -24,7 +25,7 @@ class FirebaseFirestoreWrapper {
         this.user = user
 
 
-        db.collection(this.roomname).document(username!!)
+        db.collection(rootcollection).document(username!!)
             .set(this.user!!)
     }
 
@@ -34,7 +35,9 @@ class FirebaseFirestoreWrapper {
 
 
         db.collection(this.roomname).document(ROOM_SETTINGS).set(this.roomSettings!!)
+    }
 
-
+    fun getRooms(){
+        db.collection(rootcollection).get()
     }
 }

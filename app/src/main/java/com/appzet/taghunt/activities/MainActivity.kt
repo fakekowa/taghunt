@@ -1,19 +1,14 @@
 package com.appzet.taghunt.activities
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.appzet.taghunt.R
 import com.appzet.taghunt.Services.RuntimePermissionService
 import com.appzet.taghunt.dataclass.RoomSettings
 import com.appzet.taghunt.dataclass.User
-import com.appzet.taghunt.wrappers.FirebaseFirestoreWrapper
+import com.appzet.taghunt.services.FirestoreService
 
 class MainActivity : AppCompatActivity(){
 
@@ -23,14 +18,14 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        val db = FirebaseFirestoreWrapper()
+        val db = FirestoreService()
 
         val user = User("Pontus", 0, 0, true)
         val user2 = user.copy("kalle", creator = false)
         val room = RoomSettings(15, "Pontus", false)
 
-        db.createRoom("Test Room", user)
-        db.createRoomSettings(room, "Test Room")
+        //db.createRoom("Test Room", user)
+        //db.createRoomSettings(room, "Test Room")
         db.createUser(user2)
 
         permission = RuntimePermissionService(this)
