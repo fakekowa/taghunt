@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FirestoreService {
     val ROOM_SETTINGS = "RoomSettings"
     private val db = FirebaseFirestore.getInstance()
-    var rootcollection = "Taghunt"
+    var rootcollection = "Rooms"
     var roomname = "Default"
     var user: User? = null
     var roomSettings: RoomSettings? = null
@@ -37,7 +37,13 @@ class FirestoreService {
         db.collection(this.roomname).document(ROOM_SETTINGS).set(this.roomSettings!!)
     }
 
-    fun getRooms(){
-        db.collection(rootcollection).get()
+    fun getRooms(myCallback: (MutableList<String>) -> Unit){
+        db.collection(rootcollection).get().addOnCompleteListener{ rooms ->
+            if(rooms.isSuccessful) {
+                val roomNames = mutableListOf<String>()
+                for (room in rooms.result!!) roomNames.add(room.id)
+                myCallback(roomNames)
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.appzet.taghunt.activities
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.Window
 import android.widget.Button
@@ -19,28 +20,31 @@ class RoomsActivity : AppCompatActivity() {
         setContentView(R.layout.rooms_activity)
         var db = FirestoreService()
 
-        val rooms: ArrayList<String> = ArrayList()
-
         roomListRecyclerView.layoutManager = LinearLayoutManager(this)
-        roomListRecyclerView.adapter = RoomsAdapter(rooms, this)
 
-        var roomList = db.getRooms()
+
+        db.getRooms { rooms ->
+            roomListRecyclerView.adapter = RoomsAdapter(rooms, this)
+        }
+
+        roomListRecyclerView.adapter.onBindViewHolder(  ) {
+            val intent = Intent(this, LobbyActivity::class.java)
+            startActivity(intent)
+        }
 
         var haha = "hej"
 
         //showDialog()
     }
-
-   // private fun showDialog() {
-    //   val dialog = Dialog(this)
-    //   dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    //   dialog.setCancelable(false)
-    //   dialog.setContentView(R.layout.join_game_dialog)
-    //   dialog.show()
-
-    //   val joinBtn = dialog.findViewById(R.id.joinGameDialogButton) as Button
-    //   joinBtn.setOnClickListener {
-    //       dialog.dismiss()
-    //   }
-    //}
+   //private fun showDialog() {
+   //    val dialog = Dialog(R.layout.join_game_dialog)
+   //    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+   //    dialog.setCancelable(false)
+   //    dialog.setContentView(R.layout.join_game_dialog)
+   //    dialog.show(
+   //    val joinBtn = findViewById(R.id.joinGameDialogButton) as Button
+   //    joinBtn.setOnClickListener {
+   //        dialog.dismiss()
+   //    }
+   // }
 }

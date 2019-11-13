@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity(){
             startActivity(intent)
         }
         createGameButton.setOnClickListener {
-            val intent2 = Intent(this, CreateGameActivity::class.java)
-            startActivity(intent2)
+            val intent = Intent(this, CreateGameActivity::class.java)
+            startActivity(intent)
         }
     }
 }
