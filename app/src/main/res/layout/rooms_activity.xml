@@ -20,10 +20,4 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_height="match_parent"
         android:id="@+id/roomListRecyclerView"/>
 
-    <!--<android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="663dp"
-        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView> -->
-
 </LinearLayout>

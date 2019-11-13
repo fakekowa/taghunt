@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.room_item.view.*
 
 
-class RoomsAdapter(var items : List<String>, val context: Context,private val onClickListener: (View) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
+class RoomsAdapter(
+    var items: List<String>,
+    val context: Context
+) : RecyclerView.Adapter<ViewHolder>() {
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -17,18 +20,16 @@ class RoomsAdapter(var items : List<String>, val context: Context,private val on
 
     // Inflates the item views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(com.appzet.taghunt.R.layout.room_item, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(com.appzet.taghunt.R.layout.listview_item, parent, false))
     }
 
     // Binds each animal in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.roomItem?.text = items[position]
-        holder.itemView.setOnClickListener { view ->
-            onClickListener.invoke(view)
+       // holder.itemView.setOnClickListener { view ->
+       //     onClickListener.invoke(view)
         }
     }
-
-}
 
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view)
 {
