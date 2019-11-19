@@ -1,19 +1,30 @@
 package com.appzet.taghunt.activities
 
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.appzet.taghunt.R
 import com.appzet.taghunt.adapters.RoomsAdapter
+import com.appzet.taghunt.dataclass.RoomSettings
+import com.appzet.taghunt.dataclass.User
 import com.appzet.taghunt.services.FirestoreService
 import kotlinx.android.synthetic.main.rooms_activity.*
+import org.w3c.dom.Text
 
 class RoomsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rooms_activity)
+        var user = User("Pontus", true)
+        var roomname = "Room 3"
+        var roomsettings = RoomSettings(15,user.username, false)
         var db = FirestoreService()
+
+        db.createUser(user)
 
         roomListRecyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -22,24 +33,12 @@ class RoomsActivity : AppCompatActivity() {
             roomListRecyclerView.adapter = RoomsAdapter(rooms, this)
         }
 
- //      roomListRecyclerView.adapter.onBindViewHolder(  ) {
- //          val intent = Intent(this, LobbyActivity::class.java)
- //          startActivity(intent)
- //      }
+        var one = roomListRecyclerView.findViewHolderForAdapterPosition(1)
 
-        var haha = "hej"
+       // one.setOnClickListener{
+       //     Toast.makeText(this, one.text, Toast.LENGTH_LONG).show()
+       // }
+//
 
-        //showDialog()
     }
-   //private fun showDialog() {
-   //    val dialog = Dialog(R.layout.join_game_dialog)
-   //    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-   //    dialog.setCancelable(false)
-   //    dialog.setContentView(R.layout.join_game_dialog)
-   //    dialog.show(
-   //    val joinBtn = findViewById(R.id.joinGameDialogButton) as Button
-   //    joinBtn.setOnClickListener {
-   //        dialog.dismiss()
-   //    }
-   // }
 }

@@ -23,13 +23,13 @@ class LocationService(mMap: GoogleMap) {
 
         // Create the location request to start receiving updates
         mLocationRequest = LocationRequest()
-        mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        mLocationRequest!!.setInterval(frequency)
-        mLocationRequest!!.setFastestInterval(frequency)
+        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest.setInterval(frequency)
+        mLocationRequest.setFastestInterval(frequency)
 
         // Create LocationSettingsRequest object using location request
         val builder = LocationSettingsRequest.Builder()
-        builder.addLocationRequest(mLocationRequest!!)
+        builder.addLocationRequest(mLocationRequest)
         val locationSettingsRequest = builder.build()
 
         val settingsClient = LocationServices.getSettingsClient(activity)

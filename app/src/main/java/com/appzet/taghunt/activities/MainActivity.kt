@@ -1,9 +1,9 @@
 package com.appzet.taghunt.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.appzet.taghunt.R
 import com.appzet.taghunt.Services.RuntimePermissionService
 import com.appzet.taghunt.dataclass.RoomSettings
@@ -17,16 +17,11 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-
+        val user = User("Pontus", true)
+        val roomname = "Room 3"
+        val roomsettings = RoomSettings(15,user.username, false)
         val db = FirestoreService()
-
-        val user = User("Pontus", 0, 0, true)
-        val user2 = user.copy("kalle", creator = false)
-        val room = RoomSettings(15, "Pontus", false)
-
-        //db.createRoom("Test Room", user)
-        //db.createRoomSettings(room, "Test Room")
-        db.createUser(user2)
+        db.createRoom(roomname, user, roomsettings)
 
         permission = RuntimePermissionService(this)
 
